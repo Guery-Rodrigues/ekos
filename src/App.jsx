@@ -155,7 +155,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* Grid de Métricas Secundárias (Novo) */}
+            {/* Grid de Métricas Secundárias */}
             <div className="grid grid-cols-2 gap-3 mt-2">
                <div className="bg-[#002A38] p-3 rounded-xl border border-white/5 flex flex-col items-center">
                  <RotateCw size={16} className="text-blue-400 mb-1" />
@@ -223,7 +223,8 @@ export default function App() {
       id: 'summary',
       content: (
         <Slide bgClass="bg-[#003B4D]">
-          <div className="w-full max-w-sm bg-[#002A38] border-2 border-[#F96302]/50 p-4 md:p-6 rounded-[2rem] shadow-2xl shadow-[#F96302]/10 relative z-10">
+          {/* Versão Desktop: Card com Borda | Versão Mobile: Full Screen sem borda */}
+          <div className="w-full max-w-sm md:bg-[#002A38] md:border-2 md:border-[#F96302]/50 p-4 md:p-6 md:rounded-[2rem] md:shadow-2xl md:shadow-[#F96302]/10 relative z-10 transition-all">
             <div className="flex items-center justify-between mb-4 md:mb-6 pb-4 border-b border-white/10">
               <div className="flex items-center gap-3">
                 <div className="border-l-4 border-[#F96302] pl-3">
@@ -235,19 +236,19 @@ export default function App() {
             </div>
 
             <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
-              <div className="bg-[#003B4D] p-2 md:p-3 rounded-2xl text-center">
+              <div className="bg-[#003B4D] border border-white/5 md:border-0 p-2 md:p-3 rounded-2xl text-center">
                 <p className="text-[#F96302] text-[10px] md:text-xs font-bold uppercase mb-1">Área Total</p>
                 <p className="text-white font-black text-lg md:text-xl">{DATA.area}</p>
               </div>
-              <div className="bg-[#003B4D] p-2 md:p-3 rounded-2xl text-center">
+              <div className="bg-[#003B4D] border border-white/5 md:border-0 p-2 md:p-3 rounded-2xl text-center">
                 <p className="text-green-500 text-[10px] md:text-xs font-bold uppercase mb-1">Eficiência</p>
                 <p className="text-white font-black text-lg md:text-xl">{DATA.efficiency}</p>
               </div>
-              <div className="bg-[#003B4D] p-2 md:p-3 rounded-2xl text-center">
+              <div className="bg-[#003B4D] border border-white/5 md:border-0 p-2 md:p-3 rounded-2xl text-center">
                 <p className="text-[#F96302] text-[10px] md:text-xs font-bold uppercase mb-1">Frota Ativa</p>
                 <p className="text-white font-black text-lg md:text-xl">{DATA.machines}</p>
               </div>
-              <div className="bg-[#003B4D] p-2 md:p-3 rounded-2xl text-center">
+              <div className="bg-[#003B4D] border border-white/5 md:border-0 p-2 md:p-3 rounded-2xl text-center">
                 <p className="text-blue-400 text-[10px] md:text-xs font-bold uppercase mb-1">Horas Totais</p>
                 <p className="text-white font-black text-lg md:text-xl">{DATA.totalTime}</p>
               </div>
@@ -329,40 +330,55 @@ export default function App() {
   };
 
   return (
-    <div className="w-full h-[100dvh] bg-[#002A38] flex items-center justify-center font-sans overflow-hidden">
-      {/* Background pattern - keep only visible on desktop background or subtle overlay */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiMwMDVGN0EiIHN0cm9rZS13aWR0aD0iMC41IiBzdHJva2Utb3BhY2l0eT0iMC4yIj48cGF0aCBkPSJNMCAyMGg0ME0yMCAwdjQwIi8+PC9nPjwvc3ZnPg==')] opacity-20 pointer-events-none"></div>
-      
-      {/* Container Principal: Fullscreen no mobile, Moldura no Desktop */}
-      <div className="w-full h-full md:max-w-md md:h-[90vh] md:max-h-[850px] relative shadow-2xl shadow-black/50 bg-[#003B4D] overflow-hidden md:rounded-[2rem] md:border-x md:border-[#F96302]/20">
+    <>
+      <style>{`
+        html, body, #root {
+          height: 100%;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #002A38;
+        }
+      `}</style>
+      <div className="fixed inset-0 w-full h-full bg-[#002A38] flex items-center justify-center font-sans overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiMwMDVGN0EiIHN0cm9rZS13aWR0aD0iMC41IiBzdHJva2Utb3BhY2l0eT0iMC4yIj48cGF0aCBkPSJNMCAyMGg0ME0yMCAwdjQwIi8+PC9nPjwvc3ZnPg==')] opacity-20 pointer-events-none"></div>
         
-        <div className="absolute top-6 left-0 right-0 z-50 flex px-4 gap-1">
-          {slides.map((_, idx) => (
-            <ProgressBar 
-              key={idx} 
-              active={idx <= currentSlide} 
-              progress={idx === currentSlide ? progress : 100} 
-            />
-          ))}
+        {/* Container Principal: Fullscreen no mobile (fixed inset-0), Moldura no Desktop */}
+        <div className="w-full h-full md:max-w-md md:h-[90vh] md:max-h-[850px] relative shadow-2xl shadow-black/50 bg-[#003B4D] overflow-hidden md:rounded-[2rem] md:border-x md:border-[#F96302]/20 flex flex-col">
+          
+          <div className="absolute top-4 md:top-6 left-0 right-0 z-50 flex px-4 gap-1 safe-area-top">
+            {slides.map((_, idx) => (
+              <ProgressBar 
+                key={idx} 
+                active={idx <= currentSlide} 
+                progress={idx === currentSlide ? progress : 100} 
+              />
+            ))}
+          </div>
+
+          <div className="absolute inset-0 z-40 flex">
+            <div className="w-1/3 h-full" onClick={handlePrev}></div>
+            <div className="w-2/3 h-full" onClick={handleNext}></div>
+          </div>
+
+          {/* Slide Content */}
+          <div className="flex-1 w-full h-full">
+             {slides[currentSlide].content}
+          </div>
+
+          <div className="absolute bottom-6 right-6 z-50 pointer-events-auto safe-area-bottom">
+              <button 
+                  onClick={(e) => { e.stopPropagation(); setIsPlaying(!isPlaying); }}
+                  className="p-3 bg-[#002A38]/80 text-[#F96302] rounded-full backdrop-blur-md hover:bg-[#F96302] hover:text-white transition-all border border-[#F96302]/30 shadow-lg"
+              >
+                  {isPlaying ? <Pause size={20} fill="currentColor"/> : <Play size={20} fill="currentColor"/>}
+              </button>
+          </div>
+
         </div>
-
-        <div className="absolute inset-0 z-40 flex">
-          <div className="w-1/3 h-full" onClick={handlePrev}></div>
-          <div className="w-2/3 h-full" onClick={handleNext}></div>
-        </div>
-
-        {slides[currentSlide].content}
-
-        <div className="absolute bottom-6 right-6 z-50 pointer-events-auto">
-            <button 
-                onClick={(e) => { e.stopPropagation(); setIsPlaying(!isPlaying); }}
-                className="p-3 bg-[#002A38]/80 text-[#F96302] rounded-full backdrop-blur-md hover:bg-[#F96302] hover:text-white transition-all border border-[#F96302]/30 shadow-lg"
-            >
-                {isPlaying ? <Pause size={20} fill="currentColor"/> : <Play size={20} fill="currentColor"/>}
-            </button>
-        </div>
-
       </div>
-    </div>
+    </>
   );
 }
