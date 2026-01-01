@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Pause, ChevronRight, Map, Clock, Tractor, Activity, Zap, CheckCircle, Share2, BarChart3, AlertCircle, ArrowRight } from 'lucide-react';
+import { Play, Pause, ChevronRight, Map, Clock, Tractor, Activity, Zap, CheckCircle, Share2, BarChart3, AlertCircle, ArrowRight, Route, RotateCw } from 'lucide-react';
 
 const DATA = {
   area: "48,7 M",
@@ -128,32 +128,50 @@ export default function App() {
           <div className="bg-[#005F7A]/30 p-4 rounded-full mb-4 md:mb-6 ring-2 ring-[#F96302]/50">
             <Clock className="w-10 h-10 md:w-16 md:h-16 text-[#F96302]" />
           </div>
-          <h2 className="text-xl md:text-3xl text-white font-bold mb-6 md:mb-8 uppercase tracking-wider">Raio-X do Tempo</h2>
+          <h2 className="text-xl md:text-3xl text-white font-bold mb-4 md:mb-6 uppercase tracking-wider">Raio-X do Tempo</h2>
           
-          <div className="w-full max-w-md space-y-4 md:space-y-6 relative z-10 px-2">
-            <div>
-              <div className="flex justify-between text-white mb-2 items-end">
-                <span className="font-bold text-sm md:text-lg flex items-center gap-2"><Zap size={14} className="text-[#F96302]"/> Operando</span>
-                <span className="text-[#F96302] font-black text-lg md:text-2xl">{DATA.operationTime}h</span>
+          <div className="w-full max-w-md flex flex-col gap-4 relative z-10 px-2">
+            
+            {/* Barras de Progresso Principais */}
+            <div className="space-y-3">
+              <div>
+                <div className="flex justify-between text-white mb-1 items-end whitespace-nowrap">
+                  <span className="font-bold text-sm md:text-base flex items-center gap-2"><Zap size={14} className="text-[#F96302]"/> Operando</span>
+                  <span className="text-[#F96302] font-black text-base md:text-xl ml-2">{DATA.operationTime}h</span>
+                </div>
+                <div className="w-full bg-[#002A38] rounded-full h-2 md:h-3 p-[2px] shadow-inner overflow-hidden">
+                  <div className="bg-gradient-to-r from-[#F96302] to-orange-400 h-full rounded-full shadow-lg" style={{width: '73%'}}></div>
+                </div>
               </div>
-              <div className="w-full bg-[#002A38] rounded-full h-3 md:h-5 p-1 shadow-inner">
-                <div className="bg-gradient-to-r from-[#F96302] to-orange-400 h-full rounded-full shadow-lg" style={{width: '100%'}}></div>
+
+              <div>
+                <div className="flex justify-between text-white mb-1 items-end whitespace-nowrap">
+                  <span className="font-bold text-sm md:text-base flex items-center gap-2"><AlertCircle size={14} className="text-red-400"/> Parado</span>
+                  <span className="text-red-400 font-black text-base md:text-xl ml-2">{DATA.idleTime}h</span>
+                </div>
+                <div className="w-full bg-[#002A38] rounded-full h-2 md:h-3 p-[2px] shadow-inner relative overflow-hidden">
+                  <div className="bg-gradient-to-r from-red-500 to-red-400 h-full rounded-full shadow-lg relative z-10" style={{width: '100%'}}></div>
+                </div>
               </div>
             </div>
 
-            <div>
-              <div className="flex justify-between text-white mb-2 items-end">
-                <span className="font-bold text-sm md:text-lg flex items-center gap-2"><AlertCircle size={14} className="text-red-400"/> Parado</span>
-                <span className="text-red-400 font-black text-lg md:text-2xl">{DATA.idleTime}h</span>
-              </div>
-              <div className="w-full bg-[#002A38] rounded-full h-3 md:h-5 p-1 shadow-inner relative">
-                <div className="bg-gradient-to-r from-red-500 to-red-400 h-full rounded-full shadow-lg relative z-10" style={{width: '135%'}}></div>
-              </div>
+            {/* Grid de Métricas Secundárias (Novo) */}
+            <div className="grid grid-cols-2 gap-3 mt-2">
+               <div className="bg-[#002A38] p-3 rounded-xl border border-white/5 flex flex-col items-center">
+                 <RotateCw size={16} className="text-blue-400 mb-1" />
+                 <span className="text-white/60 text-[10px] uppercase font-bold">Manobra</span>
+                 <span className="text-white font-bold text-sm">{DATA.maneuverTime}h</span>
+               </div>
+               <div className="bg-[#002A38] p-3 rounded-xl border border-white/5 flex flex-col items-center">
+                 <Route size={16} className="text-purple-400 mb-1" />
+                 <span className="text-white/60 text-[10px] uppercase font-bold">Deslocamento</span>
+                 <span className="text-white font-bold text-sm">{DATA.displacementTime}h</span>
+               </div>
             </div>
 
-            <div className="bg-[#002A38] p-4 rounded-xl border-l-4 border-blue-400 mt-4">
-               <p className="text-white/90 font-medium italic text-xs md:text-sm">
-                 "3,5 Milhões de horas trabalhadas no total. O equivalente a 400 anos em uma única safra."
+            <div className="bg-[#002A38] p-3 rounded-xl border-l-4 border-blue-400 mt-2">
+               <p className="text-white/90 font-medium italic text-xs">
+                 "3,5 Milhões de horas totais. O equivalente a 400 anos em uma única safra."
                </p>
             </div>
           </div>
@@ -169,25 +187,33 @@ export default function App() {
             <Activity className="w-12 h-12 md:w-20 md:h-20 text-[#F96302] animate-pulse" />
           </div>
           <h2 className="text-lg md:text-2xl text-[#F96302] font-bold uppercase tracking-[0.2em] mb-2">Eficiência Operacional</h2>
-          <div className="text-6xl md:text-9xl font-black text-white mb-4 drop-shadow-xl relative z-10">{DATA.efficiency}</div>
           
-          <div className="mt-6 md:mt-8 flex flex-col gap-3 md:gap-4 w-full max-w-md relative z-10 px-2">
-            <div className="flex items-center space-x-3 md:space-x-4 bg-[#002A38] px-4 md:px-6 py-3 md:py-4 rounded-3xl border-l-4 border-[#F96302] shadow-lg">
-              <Zap className="text-[#F96302] w-6 h-6 md:w-8 md:h-8" />
-              <div className="text-left">
+          {/* Ajuste de Tamanho de Fonte para Mobile */}
+          <div className="text-5xl md:text-8xl font-black text-white mb-6 drop-shadow-xl relative z-10 tracking-tight">{DATA.efficiency}</div>
+          
+          <div className="flex flex-col gap-3 w-full max-w-md relative z-10 px-4">
+            <div className="flex items-center space-x-3 bg-[#002A38] px-4 py-3 rounded-2xl border-l-4 border-[#F96302] shadow-lg">
+              <Zap className="text-[#F96302] w-5 h-5 md:w-6 md:h-6" />
+              <div className="text-left flex-1">
                 <p className="text-[10px] md:text-xs text-white/60 uppercase font-bold">Velocidade Média</p>
-                <p className="text-xl md:text-2xl font-black text-white leading-none">{DATA.avgSpeed} <span className="text-xs md:text-sm font-bold text-[#F96302]">km/h</span></p>
+                <div className="flex items-baseline justify-between w-full">
+                    <p className="text-lg md:text-xl font-black text-white leading-none">{DATA.avgSpeed}</p>
+                    <span className="text-[10px] font-bold text-[#F96302] uppercase">km/h</span>
+                </div>
               </div>
             </div>
-             <div className="flex items-center space-x-3 md:space-x-4 bg-[#002A38] px-4 md:px-6 py-3 md:py-4 rounded-3xl border-l-4 border-green-500 shadow-lg">
-              <CheckCircle className="text-green-500 w-6 h-6 md:w-8 md:h-8" />
-              <div className="text-left">
+             <div className="flex items-center space-x-3 bg-[#002A38] px-4 py-3 rounded-2xl border-l-4 border-green-500 shadow-lg">
+              <CheckCircle className="text-green-500 w-5 h-5 md:w-6 md:h-6" />
+              <div className="text-left flex-1">
                 <p className="text-[10px] md:text-xs text-white/60 uppercase font-bold">Rendimento Médio</p>
-                <p className="text-xl md:text-2xl font-black text-white leading-none">{DATA.yield}</p>
+                <div className="flex items-baseline justify-between w-full">
+                    <p className="text-lg md:text-xl font-black text-white leading-none">{DATA.yield}</p>
+                    <span className="text-[10px] font-bold text-green-500 uppercase">ha/h</span>
+                </div>
               </div>
             </div>
-             <p className="mt-4 text-white/80 font-medium italic text-xs md:text-sm">
-               "Com um rendimento de {DATA.yield}, cada segundo contou para maximizar a colheita."
+             <p className="mt-2 text-white/80 font-medium italic text-[10px] md:text-xs text-center">
+               "Cada segundo contou para maximizar a colheita."
              </p>
           </div>
         </Slide>
