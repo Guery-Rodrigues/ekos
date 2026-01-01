@@ -38,7 +38,7 @@ const EkosLogo = ({ className }) => (
 );
 
 const Slide = ({ children, bgClass = "bg-[#003B4D]" }) => (
-  <div className={`h-full w-full flex flex-col justify-center items-center p-6 text-center transition-all duration-500 ${bgClass} relative overflow-hidden`}>
+  <div className={`h-full w-full flex flex-col justify-center items-center p-4 md:p-6 text-center transition-all duration-500 ${bgClass} relative overflow-hidden`}>
     <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcmaWxsPSIjZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSI+PHBhdGggZD0iTTAgMGgyMHYyMEgweiIvPjxwYXRoIGQ9Ik0wIDBoMXYxaDFWMEgweiIgZmlsbD0iIzAwM0I0RCIvPjwvZz48L3N2Zz4=')] mix-blend-overlay pointer-events-none"></div>
     {children}
   </div>
@@ -63,20 +63,20 @@ export default function App() {
       id: 'intro',
       content: (
         <Slide bgClass="bg-gradient-to-br from-[#F96302] to-[#c24e00]">
-          <div className="flex flex-col items-center justify-center mb-10 animate-fade-in">
-            <EkosLogo className="h-12 scale-125" />
+          <div className="flex flex-col items-center justify-center mb-6 md:mb-10 animate-fade-in">
+            <EkosLogo className="h-10 md:h-12 scale-110 md:scale-125" />
           </div>
-          <h1 className="text-6xl font-black text-white mb-6 leading-tight tracking-tight drop-shadow-lg">Sua<br/>Safra<br/>2025</h1>
+          <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight tracking-tight drop-shadow-lg">Sua<br/>Safra<br/>2025</h1>
           
-          <div className="mb-8 max-w-sm mx-auto bg-white/10 p-6 rounded-2xl backdrop-blur-md border border-white/20">
-             <p className="text-white text-lg font-bold leading-relaxed">
+          <div className="mb-8 max-w-sm mx-auto bg-white/10 p-4 md:p-6 rounded-2xl backdrop-blur-md border border-white/20">
+             <p className="text-white text-base md:text-lg font-bold leading-relaxed">
                "Tecnologia que conecta o campo e impulsiona resultados reais."
              </p>
           </div>
 
-          <p className="text-white/90 text-sm font-medium uppercase tracking-widest mt-4">Os números que moveram o mundo</p>
-          <div className="mt-12 animate-bounce relative z-10">
-            <ChevronRight className="w-10 h-10 text-white mx-auto rotate-90 drop-shadow" />
+          <p className="text-white/90 text-xs md:text-sm font-medium uppercase tracking-widest mt-4">Os números que moveram o mundo</p>
+          <div className="mt-8 md:mt-12 animate-bounce relative z-10">
+            <ChevronRight className="w-8 h-8 md:w-10 md:h-10 text-white mx-auto rotate-90 drop-shadow" />
           </div>
         </Slide>
       )
@@ -86,15 +86,15 @@ export default function App() {
       content: (
         <Slide bgClass="bg-[#003B4D]">
           <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#F96302]/40 via-transparent to-transparent pointer-events-none"></div>
-          <div className="relative z-10 p-8 bg-[#003B4D]/50 rounded-full mb-6 ring-4 ring-[#F96302]/20">
-            <Map className="w-20 h-20 text-[#F96302]" />
+          <div className="relative z-10 p-6 md:p-8 bg-[#003B4D]/50 rounded-full mb-6 ring-4 ring-[#F96302]/20">
+            <Map className="w-16 h-16 md:w-20 md:h-20 text-[#F96302]" />
           </div>
-          <h2 className="text-3xl text-white font-bold mb-2 uppercase tracking-wider">Monitoramos Tudo</h2>
-          <div className="text-8xl font-black text-white mb-2 tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]">{DATA.area}</div>
-          <p className="text-2xl text-[#F96302] font-bold uppercase">Hectares</p>
+          <h2 className="text-2xl md:text-3xl text-white font-bold mb-2 uppercase tracking-wider">Monitoramos Tudo</h2>
+          <div className="text-6xl md:text-8xl font-black text-white mb-2 tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]">{DATA.area}</div>
+          <p className="text-xl md:text-2xl text-[#F96302] font-bold uppercase">Hectares</p>
           
           <div className="mt-8 bg-[#002A38] p-4 rounded-xl border border-white/10 max-w-xs">
-            <p className="text-white/90 font-medium italic">
+            <p className="text-white/90 font-medium italic text-sm md:text-base">
               "Isso é maior que a área total da Alemanha ou da Califórnia."
             </p>
           </div>
@@ -105,17 +105,17 @@ export default function App() {
       id: 'machines',
       content: (
         <Slide bgClass="bg-[#003B4D]">
-          <div className="grid grid-cols-6 gap-4 opacity-10 absolute inset-0 p-8 pointer-events-none">
-             {[...Array(48)].map((_, i) => <Tractor key={i} size={24} className="text-white" />)}
+          <div className="grid grid-cols-6 gap-2 md:gap-4 opacity-10 absolute inset-0 p-4 md:p-8 pointer-events-none">
+             {[...Array(48)].map((_, i) => <Tractor key={i} size={20} className="text-white md:w-6 md:h-6" />)}
           </div>
-          <div className="relative z-10 p-6 bg-[#F96302] rounded-3xl mb-6 shadow-lg shadow-[#F96302]/30 transform -rotate-6">
-            <Tractor className="w-24 h-24 text-white transform rotate-6" />
+          <div className="relative z-10 p-4 md:p-6 bg-[#F96302] rounded-3xl mb-6 shadow-lg shadow-[#F96302]/30 transform -rotate-6">
+            <Tractor className="w-16 h-16 md:w-24 md:h-24 text-white transform rotate-6" />
           </div>
-          <h2 className="text-4xl text-white font-bold mb-4 relative z-10 uppercase">A Frota Laranja</h2>
-          <div className="text-9xl font-black text-[#F96302] mb-4 tracking-tighter relative z-10 drop-shadow-lg">{DATA.machines}</div>
-          <p className="text-2xl text-white font-bold uppercase relative z-10">Máquinas Ativas</p>
+          <h2 className="text-3xl md:text-4xl text-white font-bold mb-4 relative z-10 uppercase">A Frota Laranja</h2>
+          <div className="text-7xl md:text-9xl font-black text-[#F96302] mb-4 tracking-tighter relative z-10 drop-shadow-lg">{DATA.machines}</div>
+          <p className="text-xl md:text-2xl text-white font-bold uppercase relative z-10">Máquinas Ativas</p>
           
-          <p className="mt-8 text-white/80 font-medium relative z-10 max-w-xs mx-auto italic">
+          <p className="mt-8 text-white/80 font-medium relative z-10 max-w-xs mx-auto italic text-sm md:text-base">
             "Se enfileiradas, formariam uma linha de mais de 60km de tecnologia pura."
           </p>
         </Slide>
@@ -126,33 +126,33 @@ export default function App() {
       content: (
         <Slide bgClass="bg-[#003B4D]">
           <div className="bg-[#005F7A]/30 p-4 rounded-full mb-6 ring-2 ring-[#F96302]/50">
-            <Clock className="w-16 h-16 text-[#F96302]" />
+            <Clock className="w-12 h-12 md:w-16 md:h-16 text-[#F96302]" />
           </div>
-          <h2 className="text-3xl text-white font-bold mb-8 uppercase tracking-wider">Raio-X do Tempo</h2>
+          <h2 className="text-2xl md:text-3xl text-white font-bold mb-8 uppercase tracking-wider">Raio-X do Tempo</h2>
           
-          <div className="w-full max-w-md space-y-6 relative z-10">
+          <div className="w-full max-w-md space-y-4 md:space-y-6 relative z-10">
             <div>
               <div className="flex justify-between text-white mb-2 items-end">
-                <span className="font-bold text-lg flex items-center gap-2"><Zap size={18} className="text-[#F96302]"/> Operando</span>
-                <span className="text-[#F96302] font-black text-2xl">{DATA.operationTime}h</span>
+                <span className="font-bold text-base md:text-lg flex items-center gap-2"><Zap size={16} className="text-[#F96302]"/> Operando</span>
+                <span className="text-[#F96302] font-black text-xl md:text-2xl">{DATA.operationTime}h</span>
               </div>
-              <div className="w-full bg-[#002A38] rounded-full h-5 p-1 shadow-inner">
+              <div className="w-full bg-[#002A38] rounded-full h-4 md:h-5 p-1 shadow-inner">
                 <div className="bg-gradient-to-r from-[#F96302] to-orange-400 h-full rounded-full shadow-lg" style={{width: '100%'}}></div>
               </div>
             </div>
 
             <div>
               <div className="flex justify-between text-white mb-2 items-end">
-                <span className="font-bold text-lg flex items-center gap-2"><AlertCircle size={18} className="text-red-400"/> Parado</span>
-                <span className="text-red-400 font-black text-2xl">{DATA.idleTime}h</span>
+                <span className="font-bold text-base md:text-lg flex items-center gap-2"><AlertCircle size={16} className="text-red-400"/> Parado</span>
+                <span className="text-red-400 font-black text-xl md:text-2xl">{DATA.idleTime}h</span>
               </div>
-              <div className="w-full bg-[#002A38] rounded-full h-5 p-1 shadow-inner relative">
+              <div className="w-full bg-[#002A38] rounded-full h-4 md:h-5 p-1 shadow-inner relative">
                 <div className="bg-gradient-to-r from-red-500 to-red-400 h-full rounded-full shadow-lg relative z-10" style={{width: '135%'}}></div>
               </div>
             </div>
 
             <div className="bg-[#002A38] p-4 rounded-xl border-l-4 border-blue-400 mt-4">
-               <p className="text-white/90 font-medium italic text-sm">
+               <p className="text-white/90 font-medium italic text-xs md:text-sm">
                  "3,5 Milhões de horas trabalhadas no total. O equivalente a 400 anos em uma única safra."
                </p>
             </div>
@@ -166,27 +166,27 @@ export default function App() {
         <Slide bgClass="bg-[#003B4D]">
           <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-[#F96302]/30 via-transparent to-transparent pointer-events-none"></div>
           <div className="relative z-10 mb-2">
-            <Activity className="w-20 h-20 text-[#F96302] animate-pulse" />
+            <Activity className="w-16 h-16 md:w-20 md:h-20 text-[#F96302] animate-pulse" />
           </div>
-          <h2 className="text-2xl text-[#F96302] font-bold uppercase tracking-[0.2em] mb-2">Eficiência Operacional</h2>
-          <div className="text-9xl font-black text-white mb-4 drop-shadow-xl relative z-10">{DATA.efficiency}</div>
+          <h2 className="text-xl md:text-2xl text-[#F96302] font-bold uppercase tracking-[0.2em] mb-2">Eficiência Operacional</h2>
+          <div className="text-7xl md:text-9xl font-black text-white mb-4 drop-shadow-xl relative z-10">{DATA.efficiency}</div>
           
           <div className="mt-8 flex flex-col gap-4 w-full max-w-md relative z-10">
-            <div className="flex items-center space-x-4 bg-[#002A38] px-6 py-4 rounded-3xl border-l-4 border-[#F96302] shadow-lg">
-              <Zap className="text-[#F96302] w-8 h-8" />
+            <div className="flex items-center space-x-4 bg-[#002A38] px-4 md:px-6 py-4 rounded-3xl border-l-4 border-[#F96302] shadow-lg">
+              <Zap className="text-[#F96302] w-6 h-6 md:w-8 md:h-8" />
               <div className="text-left">
-                <p className="text-xs text-white/60 uppercase font-bold">Velocidade Média</p>
-                <p className="text-2xl font-black text-white leading-none">{DATA.avgSpeed} <span className="text-sm font-bold text-[#F96302]">km/h</span></p>
+                <p className="text-[10px] md:text-xs text-white/60 uppercase font-bold">Velocidade Média</p>
+                <p className="text-xl md:text-2xl font-black text-white leading-none">{DATA.avgSpeed} <span className="text-xs md:text-sm font-bold text-[#F96302]">km/h</span></p>
               </div>
             </div>
-             <div className="flex items-center space-x-4 bg-[#002A38] px-6 py-4 rounded-3xl border-l-4 border-green-500 shadow-lg">
-              <CheckCircle className="text-green-500 w-8 h-8" />
+             <div className="flex items-center space-x-4 bg-[#002A38] px-4 md:px-6 py-4 rounded-3xl border-l-4 border-green-500 shadow-lg">
+              <CheckCircle className="text-green-500 w-6 h-6 md:w-8 md:h-8" />
               <div className="text-left">
-                <p className="text-xs text-white/60 uppercase font-bold">Rendimento Médio</p>
-                <p className="text-2xl font-black text-white leading-none">{DATA.yield}</p>
+                <p className="text-[10px] md:text-xs text-white/60 uppercase font-bold">Rendimento Médio</p>
+                <p className="text-xl md:text-2xl font-black text-white leading-none">{DATA.yield}</p>
               </div>
             </div>
-             <p className="mt-4 text-white/80 font-medium italic text-sm">
+             <p className="mt-4 text-white/80 font-medium italic text-xs md:text-sm">
                "Com um rendimento de {DATA.yield}, cada segundo contou para maximizar a colheita."
              </p>
           </div>
@@ -197,33 +197,33 @@ export default function App() {
       id: 'summary',
       content: (
         <Slide bgClass="bg-[#003B4D]">
-          <div className="w-full max-w-sm bg-[#002A38] border-2 border-[#F96302]/50 p-6 rounded-[2rem] shadow-2xl shadow-[#F96302]/10 relative z-10">
-            <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+          <div className="w-full max-w-sm bg-[#002A38] border-2 border-[#F96302]/50 p-4 md:p-6 rounded-[2rem] shadow-2xl shadow-[#F96302]/10 relative z-10">
+            <div className="flex items-center justify-between mb-4 md:mb-6 pb-4 border-b border-white/10">
               <div className="flex items-center gap-3">
                 <div className="border-l-4 border-[#F96302] pl-3">
-                   <h3 className="text-white font-black text-2xl tracking-widest leading-none">EKOS</h3>
+                   <h3 className="text-white font-black text-xl md:text-2xl tracking-widest leading-none">EKOS</h3>
                    <p className="text-white/50 text-[10px] font-medium uppercase tracking-wider mt-1">Report Safra 2025</p>
                 </div>
               </div>
-              <BarChart3 className="text-[#F96302]/50 w-6 h-6" />
+              <BarChart3 className="text-[#F96302]/50 w-5 h-5 md:w-6 md:h-6" />
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <div className="bg-[#003B4D] p-3 rounded-2xl text-center">
-                <p className="text-[#F96302] text-xs font-bold uppercase mb-1">Área Total</p>
-                <p className="text-white font-black text-xl">{DATA.area}</p>
+            <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
+              <div className="bg-[#003B4D] p-2 md:p-3 rounded-2xl text-center">
+                <p className="text-[#F96302] text-[10px] md:text-xs font-bold uppercase mb-1">Área Total</p>
+                <p className="text-white font-black text-lg md:text-xl">{DATA.area}</p>
               </div>
-              <div className="bg-[#003B4D] p-3 rounded-2xl text-center">
-                <p className="text-green-500 text-xs font-bold uppercase mb-1">Eficiência</p>
-                <p className="text-white font-black text-xl">{DATA.efficiency}</p>
+              <div className="bg-[#003B4D] p-2 md:p-3 rounded-2xl text-center">
+                <p className="text-green-500 text-[10px] md:text-xs font-bold uppercase mb-1">Eficiência</p>
+                <p className="text-white font-black text-lg md:text-xl">{DATA.efficiency}</p>
               </div>
-              <div className="bg-[#003B4D] p-3 rounded-2xl text-center">
-                <p className="text-[#F96302] text-xs font-bold uppercase mb-1">Frota Ativa</p>
-                <p className="text-white font-black text-xl">{DATA.machines}</p>
+              <div className="bg-[#003B4D] p-2 md:p-3 rounded-2xl text-center">
+                <p className="text-[#F96302] text-[10px] md:text-xs font-bold uppercase mb-1">Frota Ativa</p>
+                <p className="text-white font-black text-lg md:text-xl">{DATA.machines}</p>
               </div>
-              <div className="bg-[#003B4D] p-3 rounded-2xl text-center">
-                <p className="text-blue-400 text-xs font-bold uppercase mb-1">Horas Totais</p>
-                <p className="text-white font-black text-xl">{DATA.totalTime}</p>
+              <div className="bg-[#003B4D] p-2 md:p-3 rounded-2xl text-center">
+                <p className="text-blue-400 text-[10px] md:text-xs font-bold uppercase mb-1">Horas Totais</p>
+                <p className="text-white font-black text-lg md:text-xl">{DATA.totalTime}</p>
               </div>
             </div>
             
@@ -240,15 +240,14 @@ export default function App() {
       content: (
         <Slide bgClass="bg-gradient-to-br from-[#003B4D] to-[#002A38]">
           <div className="flex flex-col items-center justify-center h-full relative z-10 px-6">
-            {/* Logo removido conforme solicitado */}
             
-            <h1 className="text-4xl font-black text-white mb-8 leading-tight tracking-tight text-center max-w-md drop-shadow-2xl">
+            <h1 className="text-2xl md:text-4xl font-black text-white mb-6 md:mb-8 leading-tight tracking-tight text-center max-w-md drop-shadow-2xl">
               Transforme cada dado em uma decisão estratégica.
             </h1>
             
-            <div className="w-20 h-1 bg-[#F96302] rounded-full mb-8"></div>
+            <div className="w-16 h-1 md:w-20 md:h-1 bg-[#F96302] rounded-full mb-6 md:mb-8"></div>
             
-            <p className="text-[#F96302] text-lg font-bold uppercase tracking-widest mb-12 text-center animate-pulse">
+            <p className="text-[#F96302] text-sm md:text-lg font-bold uppercase tracking-widest mb-8 md:mb-12 text-center animate-pulse">
               O futuro da sua operação é conectado.
             </p>
 
@@ -258,9 +257,9 @@ export default function App() {
                  setCurrentSlide(0);
                  setTimeout(() => setIsPlaying(true), 100);
                }}
-               className="flex items-center gap-3 text-white bg-white/10 hover:bg-[#F96302] border border-white/20 hover:border-[#F96302] px-8 py-4 rounded-full font-bold transition-all hover:scale-105 group"
+               className="flex items-center gap-3 text-white bg-white/10 hover:bg-[#F96302] border border-white/20 hover:border-[#F96302] px-6 py-3 md:px-8 md:py-4 rounded-full font-bold transition-all hover:scale-105 group text-sm md:text-base"
             >
-               <Share2 size={20} className="group-hover:rotate-12 transition-transform"/> Replay Retrospectiva
+               <Share2 size={18} className="group-hover:rotate-12 transition-transform md:w-5 md:h-5"/> Replay Retrospectiva
             </button>
           </div>
         </Slide>
