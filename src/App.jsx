@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Play, Pause, ChevronRight, Map, Clock, Tractor, Activity, Zap, CheckCircle, Share2, BarChart3, AlertCircle, ArrowRight, Route, RotateCw } from 'lucide-react';
 
 const DATA = {
-  area: "48,7 M",
-  totalTime: "3,5 M",
-  operationTime: "1,1 M",
-  maneuverTime: "226,4 K",
-  displacementTime: "592,1 K",
-  idleTime: "1,5 M",
+  area: "48,7 Milhões",
+  totalTime: "3,5 Milhões",
+  operationTime: "1,1 Milhões",
+  maneuverTime: "226,4 Mil",
+  displacementTime: "592,1 Mil",
+  idleTime: "1,5 Milhões",
   avgSpeed: "14,66",
   efficiency: "40,81%",
   yield: "34,56",
@@ -90,7 +90,8 @@ export default function App() {
             <Map className="w-12 h-12 md:w-20 md:h-20 text-[#F96302]" />
           </div>
           <h2 className="text-xl md:text-3xl text-white font-bold mb-2 uppercase tracking-wider">Monitoramos Tudo</h2>
-          <div className="text-5xl md:text-8xl font-black text-white mb-2 tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]">{DATA.area}</div>
+          {/* Ajuste de tamanho para caber "Milhões" */}
+          <div className="text-4xl md:text-8xl font-black text-white mb-2 tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]">{DATA.area}</div>
           <p className="text-lg md:text-2xl text-[#F96302] font-bold uppercase">Hectares</p>
           
           <div className="mt-6 md:mt-8 bg-[#002A38] p-4 rounded-xl border border-white/10 max-w-xs">
@@ -137,7 +138,7 @@ export default function App() {
               <div>
                 <div className="flex justify-between text-white mb-1 items-end whitespace-nowrap">
                   <span className="font-bold text-sm md:text-base flex items-center gap-2"><Zap size={14} className="text-[#F96302]"/> Operando</span>
-                  <span className="text-[#F96302] font-black text-base md:text-xl ml-2">{DATA.operationTime}h</span>
+                  <span className="text-[#F96302] font-black text-base md:text-xl ml-2">{DATA.operationTime} h</span>
                 </div>
                 <div className="w-full bg-[#002A38] rounded-full h-2 md:h-3 p-[2px] shadow-inner overflow-hidden">
                   <div className="bg-gradient-to-r from-[#F96302] to-orange-400 h-full rounded-full shadow-lg" style={{width: '73%'}}></div>
@@ -147,7 +148,7 @@ export default function App() {
               <div>
                 <div className="flex justify-between text-white mb-1 items-end whitespace-nowrap">
                   <span className="font-bold text-sm md:text-base flex items-center gap-2"><AlertCircle size={14} className="text-red-400"/> Parado</span>
-                  <span className="text-red-400 font-black text-base md:text-xl ml-2">{DATA.idleTime}h</span>
+                  <span className="text-red-400 font-black text-base md:text-xl ml-2">{DATA.idleTime} h</span>
                 </div>
                 <div className="w-full bg-[#002A38] rounded-full h-2 md:h-3 p-[2px] shadow-inner relative overflow-hidden">
                   <div className="bg-gradient-to-r from-red-500 to-red-400 h-full rounded-full shadow-lg relative z-10" style={{width: '100%'}}></div>
@@ -160,12 +161,12 @@ export default function App() {
                <div className="bg-[#002A38] p-3 rounded-xl border border-white/5 flex flex-col items-center">
                  <RotateCw size={16} className="text-blue-400 mb-1" />
                  <span className="text-white/60 text-[10px] uppercase font-bold">Manobra</span>
-                 <span className="text-white font-bold text-sm">{DATA.maneuverTime}h</span>
+                 <span className="text-white font-bold text-sm">{DATA.maneuverTime} h</span>
                </div>
                <div className="bg-[#002A38] p-3 rounded-xl border border-white/5 flex flex-col items-center">
                  <Route size={16} className="text-purple-400 mb-1" />
                  <span className="text-white/60 text-[10px] uppercase font-bold">Deslocamento</span>
-                 <span className="text-white font-bold text-sm">{DATA.displacementTime}h</span>
+                 <span className="text-white font-bold text-sm">{DATA.displacementTime} h</span>
                </div>
             </div>
 
