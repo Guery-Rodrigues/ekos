@@ -329,10 +329,10 @@ export default function App() {
   };
 
   return (
-    <div className="w-full h-screen bg-[#002A38] flex items-center justify-center font-sans overflow-hidden relative">
+    <div className="w-full h-screen bg-[#002A38] flex items-center justify-center font-sans overflow-hidden relative p-4">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiMwMDVGN0EiIHN0cm9rZS13aWR0aD0iMC41IiBzdHJva2Utb3BhY2l0eT0iMC4yIj48cGF0aCBkPSJNMCAyMGg0ME0yMCAwdjQwIi8+PC9nPjwvc3ZnPg==')] opacity-20 pointer-events-none"></div>
       
-      <div className="w-full max-w-md h-full max-h-[900px] relative shadow-2xl shadow-black/50 bg-[#003B4D] overflow-hidden border-x border-[#F96302]/20">
+      <div className="w-full max-w-md h-[80vh] max-h-[750px] min-h-[500px] relative shadow-2xl shadow-black/50 bg-[#003B4D] overflow-hidden border-x border-[#F96302]/20 rounded-[2rem]">
         
         <div className="absolute top-6 left-0 right-0 z-50 flex px-4 gap-1">
           {slides.map((_, idx) => (
